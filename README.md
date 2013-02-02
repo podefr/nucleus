@@ -62,6 +62,15 @@ We can have multiple plugins applied to more dom elements. In this example, stat
 
 This example is coming from todoMVC: http://todomvc.com/labs/architecture-examples/olives/
 
+To add several plugins at the same time, we can use the helper function 'addAll'
+
+```js
+	nucleus.addAll({
+		event: new Event(),
+		model: new Model()
+	});
+```
+
 How to install it?
 ------------------
 
@@ -100,5 +109,8 @@ How to install it?
 	$().Nucleus
 ```
 
-Are there existing
+Are there existing nucleus plugins?
+-----------------------------------
+
+Actually yes! Olives is a JS library that has cool nucleus plugins, such as double way binding and DOM event listener with delegation. https://github.com/flams/olives
 
