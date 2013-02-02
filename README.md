@@ -73,9 +73,32 @@ How to install it?
 ```
 
 ```js
-	require(["nucleus"], function (nucleus) {
-
+	require(["nucleus"], function (Nucleus) {
+		var nucleus = new Nucleus();
 	});
+```
+
+###You want to use it as a standalone: (not released yet)
+
+```html
+	<script src="nucleus-standalone.js"></script>
+```
+
+```html
+	// Nucleus is in the global object.
+	var nucleus = new Nucleus();
 
 ```
+
+###You have jquery: (not released yet)
+
+```html
+	<script src="nucleus-jquery.js"></script>
+```
+
+```js
+	$().Nucleus
+```
+
+Are there existing
 
