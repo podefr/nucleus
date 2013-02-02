@@ -1,5 +1,5 @@
 ({
     baseUrl: "src/",
-    include: ["Plugins"],
+    include: ["Nucleus"],
     out: "nucleus.js"
 })
