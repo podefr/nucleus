@@ -4,7 +4,9 @@ NUCLEUS.JS binds your JS logic to the DOM
 It will connect this:
 
 ```html
-	<p data-myobject="method: param1, param2"></p>
+	<section>
+		<p data-myobject="method: param1, param2"></p>
+	</section>
 ```
 
 With this:
@@ -38,7 +40,7 @@ By doing this:
 	Nucleus.add('myobject', myobject);
 
 	// And finally, we apply it to the dom
-	Nucleus.apply(document.querySelector("p"));
+	Nucleus.apply(document.querySelector("section"));
 ```
 
 We can have multiple plugins applied to more dom elements. In this example, stats and model are a data-binding tool, and event adds DOM event listeners.
@@ -69,6 +71,9 @@ To add several plugins at the same time, we can use the helper function 'addAll'
 		event: new Event(),
 		model: new Model()
 	});
+
+	// And apply them to the parent node
+	nucleus.apply(document.querySelector("section"));
 ```
 
 How to install it?
