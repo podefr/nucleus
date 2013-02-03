@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Nucleus by podefr</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Nucleus</h1>
+        <p>It binds your JS logic with the DOM by adding configuration data in the markup</p>
+
+        <p class="view"><a href="https://github.com/podefr/nucleus">View the Project on GitHub <small>podefr/nucleus</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/podefr/nucleus/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/podefr/nucleus/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/podefr/nucleus">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h2>NUCLEUS.JS binds your JS logic to the DOM</h2>
+
+<p>It will connect this:</p>
+
+<div class="highlight"><pre>    <span class="nt">&lt;section&gt;</span>
+        <span class="nt">&lt;p</span> <span class="na">data-myobject=</span><span class="s">"method: param1, param2"</span><span class="nt">&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;/section&gt;</span>
+</pre></div>
+
+<p>With this:</p>
+
+<div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">myobject</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="cm">/**</span>
+<span class="cm">         * This method will be called by Nucleus.js</span>
+<span class="cm">         * @param {HTMLElement} node the node is the &lt;p&gt;</span>
+<span class="cm">         * @param {String} param1 is the param that is in the data- attribute</span>
+<span class="cm">         * @param {String} param2 is the param that is in the data- attribute</span>
+<span class="cm">         */</span>
+        <span class="nx">method</span><span class="o">:</span> <span class="kd">function</span> <span class="nx">method</span><span class="p">(</span><span class="nx">node</span><span class="p">,</span> <span class="nx">param1</span><span class="p">,</span> <span class="nx">param2</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// the this object is bound to myobject</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">otherMethod</span><span class="p">();</span>
+        <span class="p">},</span>
+
+        <span class="nx">otherMethod</span><span class="o">:</span> <span class="kd">function</span> <span class="nx">otherMethod</span><span class="p">()</span> <span class="p">{</span>
+
+        <span class="p">}</span>
+    <span class="p">}</span>
+</pre></div>
+
+<p>By doing this:</p>
+
+<div class="highlight"><pre>    <span class="c1">// We need to new up a nucleus</span>
+    <span class="kd">var</span> <span class="nx">nucleus</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Nucleus</span><span class="p">();</span>
+
+    <span class="c1">// Then, we add a 'nucleus plugin'</span>
+    <span class="nx">Nucleus</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s1">'myobject'</span><span class="p">,</span> <span class="nx">myobject</span><span class="p">);</span>
+
+    <span class="c1">// And finally, we apply it to the dom</span>
+    <span class="nx">Nucleus</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">"section"</span><span class="p">));</span>
+</pre></div>
+
+<p>We can have multiple plugins applied to more dom elements. In this example, stats and model are a data-binding tool, and event adds DOM event listeners.</p>
+
+<div class="highlight"><pre>    <span class="nt">&lt;section</span> <span class="na">id=</span><span class="s">"main"</span> <span class="na">data-stats=</span><span class="s">"bind:toggleClass,nbItems,show"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"toggle-all"</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">data-event=</span><span class="s">"listen:click,toggleAll"</span> <span class="na">data-stats=</span><span class="s">"bind:toggleCheck,nbCompleted"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"toggle-all"</span><span class="nt">&gt;</span>Mark all as complete<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;ul</span> <span class="na">id=</span><span class="s">"todo-list"</span> <span class="na">data-model=</span><span class="s">"foreach"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;li</span> <span class="na">data-model=</span><span class="s">"bind:toggleClass,completed,completed;"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"view"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"toggle"</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">data-model=</span><span class="s">"bind:checked,completed"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;label</span> <span class="na">data-model=</span><span class="s">"bind:textContent,title"</span> <span class="na">data-event=</span><span class="s">"listen:dblclick,startEdit"</span><span class="nt">&gt;&lt;/label&gt;</span>
+                    <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"destroy"</span> <span class="na">data-event=</span><span class="s">"listen:click,remove"</span><span class="nt">&gt;&lt;/button&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"edit"</span> <span class="na">data-model=</span><span class="s">"bind:value,title"</span> <span class="na">data-event=</span><span class="s">"listen:keydown,stopEdit; listen:blur,stopEdit"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;/ul&gt;</span>
+    <span class="nt">&lt;/section&gt;</span>
+</pre></div>
+
+<p>This example is coming from todoMVC: <a href="http://todomvc.com/labs/architecture-examples/olives/">http://todomvc.com/labs/architecture-examples/olives/</a></p>
+
+<p>To add several plugins at the same time, we can use the helper function 'addAll'</p>
+
+<div class="highlight"><pre>    <span class="nx">nucleus</span><span class="p">.</span><span class="nx">addAll</span><span class="p">({</span>
+        <span class="nx">event</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Event</span><span class="p">(),</span>
+        <span class="nx">model</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Model</span><span class="p">()</span>
+    <span class="p">});</span>
+
+    <span class="c1">// And apply them to the parent node</span>
+    <span class="nx">nucleus</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">"section"</span><span class="p">));</span>
+</pre></div>
+
+<h2>How to install it?</h2>
+
+<h3>You have require.js:</h3>
+
+<div class="highlight"><pre>    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"require.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</pre></div>
+
+<div class="highlight"><pre>    <span class="nx">require</span><span class="p">([</span><span class="s2">"path/to/Nucleus"</span><span class="p">],</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">Nucleus</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">nucleus</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Nucleus</span><span class="p">();</span>
+    <span class="p">});</span>
+</pre></div>
+
+<h3>You want to use it as a standalone:</h3>
+
+<div class="highlight"><pre>    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"Nucleus-standalone.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</pre></div>
+
+<div class="highlight"><pre>    <span class="c1">// Nucleus is packed with AlmondJS, it still doesn't leak to the Global Object</span>
+    <span class="c1">// but you have access to Almond's require/define, so you can do</span>
+    <span class="nx">require</span><span class="p">([</span><span class="s2">"Nucleus"</span><span class="p">],</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">Nucleus</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">nucleus</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Nucleus</span><span class="p">();</span>
+    <span class="p">});</span>
+</pre></div>
+
+<h3>You have jquery: (not released yet)</h3>
+
+<div class="highlight"><pre>    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"nucleus-jquery.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</pre></div>
+
+<div class="highlight"><pre>    <span class="nx">$</span><span class="p">().</span><span class="nx">Nucleus</span>
+</pre></div>
+
+<h2>Are there existing nucleus plugins?</h2>
+
+<p>Actually yes! Olives is a JS library that has cool nucleus plugins, such as double way binding and DOM event listener with delegation. <a href="https://github.com/flams/olives">https://github.com/flams/olives</a></p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/podefr">podefr</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-38206569-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
