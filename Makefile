@@ -1,6 +1,11 @@
 clean:
-	rm -f Nucleus.js
+	rm -f Nucleus*.js
 
-Nucleus.js:
-	r.js -o build.js
+amd:
+	r.js -o build-directives/build-amd.js
+
+standalone:
+	r.js -o build-directives/build-standalone.js
+
+all: amd standalone
 

@@ -15,12 +15,15 @@
 			});
 
 			requirejs(["Nucleus"], function (Nucleus) {
+
 				var nucleus = new Nucleus();
+
 				nucleus.add("contact", {
 					firstname: function (node) {
 						node.innerText = "Nucleus";
 					}
 				});
+
 				nucleus.apply(document.querySelector("section"));
 			});
 		</script>

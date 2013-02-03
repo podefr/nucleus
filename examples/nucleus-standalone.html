@@ -1,0 +1,24 @@
+<html>
+	<head>
+		<title>NucleusJS example - standalone</title>
+		<script src="../Nucleus-standalone.js"></script>
+	</head>
+	<body>
+
+		<section>
+			<p><span data-contact="firstname"></span> says hi!</p>
+		</section>
+
+		<script>
+			require(["Nucleus"], function (Nucleus) {
+				var nucleus = new Nucleus();
+				nucleus.add("contact", {
+					firstname: function (node) {
+						node.innerText = "Nucleus";
+					}
+				});
+				nucleus.apply(document.querySelector("section"));
+			});
+		</script>
+	</body>
+</html>

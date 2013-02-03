@@ -86,16 +86,18 @@ How to install it?
 	});
 ```
 
-###You want to use it as a standalone: (not released yet)
+###You want to use it as a standalone:
 
 ```html
-	<script src="nucleus-standalone.js"></script>
+	<script src="Nucleus-standalone.js"></script>
 ```
 
-```html
-	// Nucleus is in the global object.
-	var nucleus = new Nucleus();
-
+```js
+	// Nucleus is packed with AlmondJS, it still doesn't leak to the Global Object
+	// but you have access to Almond's require/define, so you can do
+	require(["Nucleus"], function (Nucleus) {
+		var nucleus = new Nucleus();
+	});
 ```
 
 ###You have jquery: (not released yet)
