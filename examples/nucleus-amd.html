@@ -1,0 +1,28 @@
+<html>
+	<head>
+		<title>NucleusJS example - AMD</title>
+		<script src="libs/require.js"></script>
+	</head>
+	<body>
+
+		<section>
+			<p><span data-contact="firstname"></span> says hi!</p>
+		</section>
+
+		<script>
+			requirejs.config({
+				baseUrl: "../"
+			});
+
+			requirejs(["Nucleus"], function (Nucleus) {
+				var nucleus = new Nucleus();
+				nucleus.add("contact", {
+					firstname: function (node) {
+						node.innerText = "Nucleus";
+					}
+				});
+				nucleus.apply(document.querySelector("section"));
+			});
+		</script>
+	</body>
+</html>

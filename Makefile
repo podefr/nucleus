@@ -1,6 +1,6 @@
 clean:
-	rm nucleus.js
+	rm -f Nucleus.js
 
-nucleus.js:
+Nucleus.js:
 	r.js -o build.js
 
