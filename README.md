@@ -78,11 +78,10 @@ How to install it?
 
 ```html
 	<script src="require.js"></script>
-	<script src="nucleus.js"></script>
 ```
 
 ```js
-	require(["nucleus"], function (Nucleus) {
+	require(["path/to/Nucleus"], function (Nucleus) {
 		var nucleus = new Nucleus();
 	});
 ```
