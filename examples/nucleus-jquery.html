@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<title>NucleusJS example - standalone</title>
+		<script src="libs/jquery-1.9.0.min.js"></script>
+		<script src="../Nucleus-jquery.js"></script>
+	</head>
+	<body>
+
+		<section>
+			<p><span data-contact="firstname"></span> says hi!</p>
+		</section>
+
+		<script>
+			require(["Nucleus-jquery"], function ($) {
+
+				var contact = {
+					'firstname': function (node) {
+						node.innerText = "Nucleus"
+					}
+				};
+
+				$('section').nucleus({
+					'contact': contact
+				});
+
+			});
+		</script>
+	</body>
+</html>

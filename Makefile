@@ -7,5 +7,8 @@ amd:
 standalone:
 	r.js -o build-directives/build-standalone.js
 
-all: amd standalone
+jquery:
+	r.js -o build-directives/build-jquery.js
+
+all: amd standalone jquery
 
