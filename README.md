@@ -55,7 +55,9 @@ Nucleus will then execute the method 'value' in the plugin 'bind', passing it tw
  - {HTMLElement} the node to which the data-attribute is applied
  - {String} the parameters specified in the data-attribute, after the name of the method (name in our case)
 
-Of course, we can have multiple plugins applied to multiple DOM elements.
+We've just bound some JS logic to a dom element. This seems overkill for such simple task, but it'll become make more sense when we'll add more plugins, and especially when they are plugins that we can just reuse.
+
+ Let's add more plugins, on for setting data into the DOM, one for listening to DOM events.
 
 ### HTML
 
