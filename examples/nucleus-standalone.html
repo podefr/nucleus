@@ -20,5 +20,23 @@
 				nucleus.apply(document.querySelector("section"));
 			});
 		</script>
+
+
+		<section>
+			<span data-bind="value: name">
+		</section>
+
+		<script>
+			var nucleus = new Nucleus();
+
+			nucleus.add("bind", {
+				value: function (node, param) {
+					// this === the bind plugin
+				}
+			});
+
+			nucleus.apply(document.querySelector("span"));
+		</script>
+
 	</body>
 </html>
