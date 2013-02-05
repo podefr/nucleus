@@ -1,4 +1,4 @@
-NUCLEUS.JS binds your JS logic to the DOM by adding configuration to the markup
+Nucleus binds your JS logic to the DOM by adding configuration to the markup
 -------------------------------------------------------------------------------
 
 Ever wanted to bind your JS logic to the DOM by doing something like this in your HTML?
@@ -8,7 +8,7 @@ Ever wanted to bind your JS logic to the DOM by doing something like this in you
 	<button data-listen="click: doSomething"></button>
 ```
 
-Nucleus.js allows you to do just that. It will create the link between your HTML and your JavaScript logic.
+Nucleus allows you to do just that. It will create the link between your HTML and your JavaScript logic.
 
 Let's start with a simple example. We would like to set the value of "name" in the paragraph.
 
@@ -45,7 +45,7 @@ Let's start with a simple example. We would like to set the value of "name" in t
 	nucleus.apply(document.querySelector("p"));
 ```
 
-Nucleus.js will actually create this relationship:
+Nucleus will actually create this relationship:
 
 ![Schema](https://raw.github.com/podefr/nucleus/master/schema.png)
 
@@ -57,7 +57,7 @@ Nucleus will then execute the method 'value' in the plugin 'bind', passing it tw
 
 We've just bound some JS logic to a dom element. This seems overkill for such simple task, but it'll make more sense when we'll add more plugins, and especially when they are plugins that we can just reuse.
 
- Let's add more plugins, on for setting data into the DOM, one for listening to DOM events.
+ Let's add more plugins, one for setting data into the DOM, one for listening to DOM events.
 
 ### HTML
 
@@ -68,7 +68,7 @@ We've just bound some JS logic to a dom element. This seems overkill for such si
 	</section>
 ```
 
-In this case, we have two plugins, one called 'bind', and the other one called 'listen'. We can configure Nucleus.js to accept more than one plugin by calling the 'addAll' method instead of just 'add':
+In this case, we have two plugins, one called 'bind', and the other one called 'listen'. We can configure Nucleus to accept more than one plugin by calling the 'addAll' method instead of just 'add':
 
 ```js
 	// This is some UI with a doSomething method:
@@ -97,9 +97,11 @@ In this case, we have two plugins, one called 'bind', and the other one called '
 	});
 ```
 
+We still have the same plugin for adding data to the DOM. We also have added a new plugin called 'listen' that adds an eventListener to the targeted DOM. Whenever the user clicks on this DOM element, it will call the method 'doSomething' on UI.
+
 Of course, this example is very limited, as we can't bind a value from an object to something else than innerText, and we can't listen to another event that 'click' as long as we don't create new functions for handling them. Moreover, we can't change the object from which we get the value, nor can we change the object on which to call the method when a click occurs.
 
-Let's do something more reusable and configurable. We pretend that the object that contains the data is a backbone.Model, which triggers events whenever something changes. We could also call a method on a backbone.View when a click occurs.
+So let's create some reusable plugins. We pretend that the object that contains the data is a backbone.Model, which triggers events whenever something changes. We could also call a method on a backbone.View when a click occurs.
 
 ### HTML
 
