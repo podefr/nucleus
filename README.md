@@ -235,11 +235,11 @@ How to install it?
 
 		// We select the parent DOM node where we want to apply our plugins.
 		// Nucleus.apply() will be called on all of the elements returned by the $()
-		$('section').nucleus({
+		$("section").nucleus({
 
 			// And we give the list of plugins. Nucleus.addAll will be called with this object.
-			'contact': {
-				'firstname': function (node) {
+			"contact": {
+				"firstname": function (node) {
 					node.innerText = "Nucleus";
 				}
 			}
