@@ -46,7 +46,7 @@ Let's start with a simple example. We would like to set the value of "name" in t
 
 Nucleus.js will actually create this relationship:
 
-![Schema](github.com/podefr/nucleus/blob/master/schema.png)
+![Schema](https://raw.github.com/podefr/nucleus/master/schema.png)
 
 Where data-bind is configured while adding the plugin to nucleus. We could have used any other allowed name, such as 'listen', 'style', 'css', 'text' or even 'another-plugin_for-nucleus'.
 
