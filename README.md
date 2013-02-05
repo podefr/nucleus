@@ -221,14 +221,30 @@ How to install it?
 	});
 ```
 
-###You have jquery: (not released yet)
+###You have jquery:
 
 ```html
-	<script src="nucleus-jquery.js"></script>
+	<script src="jquery.js"></script>
+	<script src="Nucleus-jquery.js"></script>
 ```
 
 ```js
-	$().Nucleus
+	// Nucleus-jquery is also packed with AlmondJS. When requireing the plugin
+	// it will give you a reference to Jquery which will have the nucleus plugin
+	require(["Nucleus-jquery"], function ($) {
+
+		// We select the parent DOM node where we want to apply our plugins
+		$('section').nucleus({
+
+			// And we give the list of plugins. Nucleus.addAll will be called with this object.
+			'contact': {
+				'firstname': function (node) {
+					node.innerText = "Nucleus";
+				}
+			}
+		});
+
+	});
 ```
 
 Are there existing nucleus plugins?

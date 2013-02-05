@@ -13,14 +13,12 @@
 		<script>
 			require(["Nucleus-jquery"], function ($) {
 
-				var contact = {
-					'firstname': function (node) {
-						node.innerText = "Nucleus"
-					}
-				};
-
 				$('section').nucleus({
-					'contact': contact
+					'contact': {
+						'firstname': function (node) {
+							node.innerText = "Nucleus";
+						}
+					}
 				});
 
 			});
