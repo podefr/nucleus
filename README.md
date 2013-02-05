@@ -251,5 +251,6 @@ How to install it?
 Are there existing nucleus plugins?
 -----------------------------------
 
-Actually yes! Olives is a JS library that has cool nucleus plugins, such as double way binding and DOM event listener with delegation. https://github.com/flams/olives
+Actually yes! Olives is a JS library that has cool nucleus plugins, such as double way binding and DOM event listener with delegation. Nucleus has been extracted from Olives. https://github.com/flams/olives
+
 
