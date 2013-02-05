@@ -8,7 +8,7 @@ Ever wanted to bind your JS logic to the DOM by doing something like this in you
 	<button data-listen="click: doSomething"></button>
 ```
 
-Nucleus.JS allows you to do just that. It will create the link between your HTML and your JavaScript logic.
+Nucleus.js allows you to do just that. It will create the link between your HTML and your JavaScript logic.
 
 Let's start with a simple example. We would like to set the value of "name" in the paragraph.
 
@@ -33,7 +33,7 @@ Let's start with a simple example. We would like to set the value of "name" in t
 	// Then we add a nucleus plugin called 'bind'
 	nucleus.add("bind", {
 
-		// Which has method called value
+		// Which has a method called value
 		value: function (node, param) {
 			// That will set the innerText of the dom to "John"
 			node.innerText = someone[param];
@@ -44,12 +44,13 @@ Let's start with a simple example. We would like to set the value of "name" in t
 	nucleus.apply(document.querySelector("p"));
 ```
 
-We have actually created this relationship:
+Nucleus.js will actually create this relationship:
 
-![Schema](podefr.github.com/nucleus/shema.png)
+![Schema](github.com/podefr/nucleus/blob/master/schema.png)
 
-Where data-bind is actually configured while adding the plugin to nucleus. We could have used any other allowed name, such as listen, style, css, text or even another-plugin_for-nucleus.
-Then we tell nucleus to call the method called 'value' in 'bind', and to pass it two things
+Where data-bind is configured while adding the plugin to nucleus. We could have used any other allowed name, such as 'listen', 'style', 'css', 'text' or even 'another-plugin_for-nucleus'.
+
+Nucleus will then execute the method 'value' in the plugin 'bind', passing it two things:
  - {HTMLElement} the node to which the data-attribute is applied
  - {String} the parameters specified in the data-attribute, after the name of the method (name in our case)
 
@@ -64,7 +65,7 @@ Of course, we can have multiple plugins applied to multiple DOM elements.
 	</section>
 ```
 
-In this case, we have two plugins, one called bind, and the other one called listen. We can configure Nucleus.js to accept more than one plugin by calling the 'addAll' method instead of just 'add':
+In this case, we have two plugins, one called 'bind', and the other one called 'listen'. We can configure Nucleus.js to accept more than one plugin by calling the 'addAll' method instead of just 'add':
 
 ```js
 	// This is some UI with a doSomething method:
