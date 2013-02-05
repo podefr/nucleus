@@ -99,7 +99,7 @@ In this case, we have two plugins, one called 'bind', and the other one called '
 
 We still have the same plugin for adding data to the DOM. We also have added a new plugin called 'listen' that adds an eventListener to the targeted DOM. Whenever the user clicks on this DOM element, it will call the method 'doSomething' on UI.
 
-Of course, this example is very limited, as we can't bind a value from an object to something else than innerText, and we can't listen to another event that 'click' as long as we don't create new functions for handling them. Moreover, we can't change the object from which we get the value, nor can we change the object on which to call the method when a click occurs.
+Of course, this example is very limited, as we can't bind a value from an object to something else than innerText, and we can't listen to another event than 'click' as long as we don't create new functions for handling them. Moreover, we can't change the object from which we get the value, nor can we change the object on which to call the method when a click occurs.
 
 So let's create some reusable plugins. We pretend that the object that contains the data is a backbone.Model, which triggers events whenever something changes. We could also call a method on a backbone.View when a click occurs.
 
@@ -123,11 +123,10 @@ So let's create some reusable plugins. We pretend that the object that contains 
 		alert(model.get(param);
 	};
 
-	// We create our Nucleus
-	var nucleus = new Nucleus();
-
-	// We create a constructor for a binding plugin
-	// It takes a model as a parameter so it knows where to get the data
+	/**
+	 * We create a constructor for a binding plugin
+	 * It takes a model as a parameter so it knows where to get the data
+	 */
 	function Binding(model) {
 
 		// This is the change method of our plugin
@@ -144,8 +143,10 @@ So let's create some reusable plugins. We pretend that the object that contains 
 		};
 	}
 
-	// Then we create a constructor for an event plugin
-	// It takes a view as parameter, so it knows where to call the method
+	/**
+	 * Then we create a constructor for an event plugin
+	 * It takes a view as parameter, so it knows where to call the method
+	 */
 	function Event(view) {
 
 		this.event = function (node, eventName, methodName, param) {
@@ -155,6 +156,9 @@ So let's create some reusable plugins. We pretend that the object that contains 
 		};
 
 	}
+
+	// We create our Nucleus
+	var nucleus = new Nucleus();
 
 	// Then we add our plugins
 	nucleus.add({
@@ -170,6 +174,10 @@ So let's create some reusable plugins. We pretend that the object that contains 
 	// And finally, we apply it to the parent element of the DOM that we want to bind to this logic
 	nucleus.apply( document.querySelector("section") );
 ```
+
+In this more complete example, we have a Binding plugin that will listen to changes on a backbone.Model to update the DOM. We have created a reusable data-binding plugin that can now be reused to bind as many backbone.Model as we want to our DOM. We have event specified which property of the DOM node we want to update. It could be the className, or even value for form elements!
+
+Then we have created an Event listener that will listen to 'click', or any other event we want to listen to, and forward the event to the view that we have initialized the plugin with.
 
 We can also call multiple methods on the same DOM element:
 
