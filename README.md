@@ -175,9 +175,9 @@ So let's create some reusable plugins. We pretend that the object that contains 
 	nucleus.apply( document.querySelector("section") );
 ```
 
-In this more complete example, we have a Binding plugin that will listen to changes on a backbone.Model to update the DOM. We have created a reusable data-binding plugin that can now be reused to bind as many backbone.Model as we want to our DOM. We have event specified which property of the DOM node we want to update. It could be the className, or even value for form elements!
+In this more complete example, we have a Binding plugin that will listen to changes on a backbone.Model to update the DOM. We have created a reusable data-binding plugin that can now be reused to bind as many backbone.Model as we want to our DOM. We have even specified which property of the DOM node we want to update. It could be the className, or even value for form elements!
 
-Then we have created an Event listener that will listen to 'click', or any other event we want to listen to, and forward the event to the view that we have initialized the plugin with.
+Then we have created an Event listener that will listen to 'click', or any other event we want to listen to, and forward the event to the method of the view that we have initialized the plugin with.
 
 We can also call multiple methods on the same DOM element:
 
