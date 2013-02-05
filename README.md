@@ -23,6 +23,7 @@ Let's start with a simple example. We would like to set the value of "name" in t
 ```js
 	// The object to display in the DOM
 	var someone = {
+		// This is the value that we want to display in the paragraph
 		name: "John",
 		type: "Doe"
 	};
