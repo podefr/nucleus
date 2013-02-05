@@ -233,7 +233,8 @@ How to install it?
 	// it will give you a reference to Jquery which will have the nucleus plugin
 	require(["Nucleus-jquery"], function ($) {
 
-		// We select the parent DOM node where we want to apply our plugins
+		// We select the parent DOM node where we want to apply our plugins.
+		// Nucleus.apply() will be called on all of the elements returned by the $()
 		$('section').nucleus({
 
 			// And we give the list of plugins. Nucleus.addAll will be called with this object.
