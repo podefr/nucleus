@@ -249,11 +249,11 @@
 
         <span class="c1">// We select the parent DOM node where we want to apply our plugins.</span>
         <span class="c1">// Nucleus.apply() will be called on all of the elements returned by the $()</span>
-        <span class="nx">$</span><span class="p">(</span><span class="s1">'section'</span><span class="p">).</span><span class="nx">nucleus</span><span class="p">({</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s1">"section"</span><span class="p">).</span><span class="nx">nucleus</span><span class="p">({</span>
 
             <span class="c1">// And we give the list of plugins. Nucleus.addAll will be called with this object.</span>
-            <span class="s1">'contact'</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s1">'firstname'</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+            <span class="s1">"contact"</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s1">"firstname"</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
                     <span class="nx">node</span><span class="p">.</span><span class="nx">innerText</span> <span class="o">=</span> <span class="s2">"Nucleus"</span><span class="p">;</span>
                 <span class="p">}</span>
             <span class="p">}</span>
