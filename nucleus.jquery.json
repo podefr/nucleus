@@ -1,12 +1,11 @@
 {
     "name": "nucleus",
     "title": "Nucleus jQuery",
-    "description": "Nucleus binds your JS logic with the DOM by adding configuration data in the markup. You can add data- attributes to the DOM and nucleus will find them and call the related methods in the JavaScript objects that you have plugged in Nucleus.",
+    "description": "Nucleus binds your JS logic with the DOM by adding configuration data in the markup. You can add data- attributes to the DOM and nucleus will find them and call the related methods in the JavaScript objects that you have plugged in Nucleus. You can then do things like data-binding or listening to DOM events.",
     "keywords": [
-        "DOM",
-        "markup",
         "bind",
-        "MVC"
+        "DOM",
+        "markup"
     ],
     "version": "1.3.1",
     "author": {
