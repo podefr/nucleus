@@ -1,3 +1,6 @@
+Nucleus is deprecated. It's a fantastic tool but it's got a new name and a new repository, it's now called Seam and you can find it [here](https://github.com/flams/seam)
+Event better, it's wrapper into something more fancy, called [Seam-View](https://github.com/flams/seam-view), which allows you to define your templates as strings or DOM elements before adding JS behavior to it.
+
 Nucleus binds your JS logic to the DOM by adding configuration to the markup
 -------------------------------------------------------------------------------
 
@@ -252,5 +255,3 @@ Are there any existing nucleus plugins?
 -----------------------------------
 
 Actually yes! Olives is a JS library that has cool nucleus plugins, such as double way binding and a DOM event listener with delegation. Nucleus has been extracted from Olives. https://github.com/flams/olives
-
-
